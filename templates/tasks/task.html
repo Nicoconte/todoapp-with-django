@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block body %}
+
+<div class="task-details-container w-100 h-100">
+    <div class="task-details-sup w-100 h-25">
+        <div class="task-details-logo w-100 h-50">
+            <h3> <img src="{% static 'img/logo2.png' %}" alt=""> TodoApp </h3>
+        </div>
+        <div class="task-details-action w-100 h-50">
+            <a href="{% url 'dashboard' %}" class="btn ml-4" style="background-color: inherit;"> <i class="fa fa-arrow-left"></i> Volver</a>
+        </div>
+    </div>
+    <div class="task-details-mid w-100 h-75">
+        <div class="task-details-date w-100 h-25 d-flex flex-row align-items-center justify-content-center">
+            <div class="alert alert-info">
+                <span> <i class="fa fa-hourglass-start"></i> Fecha de creacion: {{task_details.initial_date}} </span>
+            </div>
+            <div class="alert alert-primary ml-3">
+                <span> <i class="fa fa-hourglass-end"></i> Fecha limite: {{task_details.limit_date}} </span>
+            </div>
+
+            {% if days_left > 10 and task_details.status == False %}            
+                <div class="alert alert-success ml-3">
+                    <span> <i class="fa fa-clock-o"></i> Dias restantes: {{days_left}} <i class="fa fa-smile-o"></i> </span>
+                </div>
+            {% elif days_left > 0 and not date_exceeded and task_details.status == False %}
+                <div class="alert alert-warning ml-3">
+                    <span> <i class="fa fa-clock-o"></i> Dias restantes: {{days_left}} <i class="fa fa-meh-o"></i> </span>
+                </div>
+            {% elif days_left == 0 and task_details.status == False %}
+                <div class="alert alert-warning ml-3">
+                    <span> <i class="fa fa-clock-o"></i> Estas en la fecha limite! <i class="fa fa-meh-o"></i> </span>
+                </div>             
+
+            {% elif date_exceeded and task_details.status == False %}
+                <div class="alert alert-danger ml-3">
+                    <span> <i class="fa fa-clock-o"></i> Te excediste por : {{days_left}} dias <i class="fa fa-frown-o"></i> </span>
+                </div>
+            
+            {% else %}            
+                <div class="alert alert-success ml-3">
+                    <span> <i class="fa fa-clock-o"></i> Tarea completada el {{task_details.accomplishment_date}} <i class="fa fa-calendar-check-o"></i> </span>
+                </div>
+            {% endif %}
+            
+        </div>
+        <div class="task-details-description">
+            <div class="task-details-info w-100 h-25 d-flex justify-content-center">
+                <div class="alert alert-secondary w-50 d-flex justify-content-center">
+                    {% if task_details.status %}
+                        <span> <i class="fa fa-lock"></i> Estado: Terminada </span>
+                    {% else %}
+                        <span> <i class="fa fa-unlock"></i> Estado: Sin terminar </span>
+                    {% endif %}
+                    <span class="ml-3"> | </span>
+
+                    {% if task_details.priority == "alta" %}
+                        <span class="ml-3"> <i class="fa fa-circle text-danger"></i> {{ task_details.priority.capitalize }} prioridad</span>  
+                    {% elif task_details.priority == "media" %}
+                        <span class="ml-3"> <i class="fa fa-circle text-info"></i> {{ task_details.priority.capitalize }} prioridad</span>
+                    {% else %}
+                        <span class="ml-3"> <i class="fa fa-circle text-success"></i> {{ task_details.priority.capitalize }} prioridad</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="task-details-usertask container h-75 d-flex justify-content-center align-items-start flex-column border p-4">
+                <h3> <i class="fa fa-book text-primary"></i> <i class="fa fa-hand-o-down"></i> Tarea: </h3>
+                <h6 class="ml-5"> {{ task_details.task | linebreaks }} </h6>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}

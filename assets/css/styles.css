@@ -1,0 +1,288 @@
+*{margin:0px; padding:0px; box-sizing: border-box;}
+
+body{
+    width:100%;
+    height:auto;
+}
+
+#main-container{
+    width:100%;
+    height:654px;
+}
+
+.navbar-container{
+    height:10%;
+}
+
+.navbar-container a {
+    background-color: #b088f9;
+    border-radius:3px; 
+}
+
+.navbar-container a:hover{
+    background-color: #da9ff9;
+}
+
+.navbar-log img{
+    width:15%;
+    height:80%;
+}
+
+.navbar-log i{
+    font-size: 20px;
+    margin-top:15px;
+    margin-left:50px;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 3px;
+}
+
+.home-container{
+    width:100%;
+    height:80%;
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+.home-background {
+    width: 50%;
+    height:100%;
+}
+
+.home-background img{
+    width: 100%;
+    height: 100%;
+}
+
+.home-presentation {
+    width:50%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-presentation h1{
+    font-size:37px;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.home-presentation h4{
+    font-family: 'Patrick Hand', cursive;
+}
+
+.home-presentation blockquote{
+    margin-bottom: 150px;
+}
+
+.home-presentation a{
+    background-color: #8094e4;
+    color:white;
+}
+
+.home-presentation a:hover{
+    background-color: #98acf8;
+    color:white;
+}
+
+.footer-container{
+    width:100%;
+    height:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 3px;
+}
+
+.user-container{
+    height:80%;
+}
+
+.user-form{
+    width:40%;
+    height:90%;
+    border-radius: 5px;
+    margin-top:40px;
+}
+
+.user-form-head {
+    width:100%;
+    height:15%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-family: 'Patrick Hand', cursive;
+    border-radius: 5px;
+}
+
+.user-form-body{
+    width: 100%;
+    height:75%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border:0.5px double rgb(170, 170, 170);
+    border-top:0px;
+}
+
+.user-form-body form{
+    width:95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-form-body button{
+    width:100%;
+    color:white;
+}
+
+
+.dashboard-container{
+    width:100%;
+    height: 100%;
+}
+
+.dashboard-sup-section {
+    width:100%;
+    height:25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-sup-info{
+    width:100%;
+    height:60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-app-text{
+    width:45%;
+    height: 100%;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.dashboard-app-text h3, .task-form-sup-logo h3, .task-details-logo h3{
+    margin-left:40px;
+    font-family: 'Patrick Hand', cursive;
+    font-size:30px;
+}
+
+.dashboard-app-text img, .task-form-sup-logo img, .task-details-logo img{
+    width:60px;
+    height:80px;
+}
+
+.dashboard-task-info{
+    width:65%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.dashboard-task-info .alert{
+    margin-top:10px;
+    margin-left:40px;
+}
+
+.dashboard-sup-task-input{
+    width:100%;
+    height:40%;
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-sup-task-input a{
+    background-color: inherit;
+}
+
+.dashboard-mid-section{
+    width:100%;
+    height:75%;
+    display:flex;
+    justify-content: center;
+}
+
+.task-form-container{
+    width:100%;
+    height:100%;
+}
+
+.task-form-sup-section {
+    width:100%;
+    height:20%;
+    background-color: transparent;
+}
+
+
+.task-form-action button{
+    background-color: inherit;
+}
+
+.task-form-mid-section{
+    width:100%;
+    height:70%;
+    background-color: transparent;
+}
+
+.task-form{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.task-form form{
+    width:70%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.task-form form h3{
+    font-size: 40px;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.task-form form select, button{
+    width:70%;
+}
+
+.task-form form input{
+    width:70%;
+}
+
+.task-form form textarea {
+    width: 70%;
+    height: 30%;
+}
+
+.task-buttons-action {
+    display:flex;
+    flex-direction: row;
+}
+
+.task-buttons-action a {
+    width:15%;
+    height:100%;
+    margin-left:5px;
+}
+
+
+@media(min-width:1400px) and (max-width:2000px) {
+    #main-container{
+        height:954px;
+    }
+}

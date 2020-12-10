@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block body %}
+
+<div class="error-container w-100 h-75 d-flex justify-content-center align-items-center">
+    <div class="alert alert-info w-50 d-flex flex-row justify-content-center align-items-center" role="alert">
+        <h2>Error 404 | </h2> 
+        <a href="{% url 'home' %}" class="ml-3"> volver </a>
+    </div>
+</div>
+
+{% endblock body %}

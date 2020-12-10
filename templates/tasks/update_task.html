@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% load static %}
+{% block navbar %} {% endblock navbar %}
+
+{% block body %}
+
+<div class="task-form-container">
+    <div class="task-form-sup-section">
+        <div class="task-form-sup-logo">
+            <h3> <img src="{% static 'img/logo2.png' %}" alt=""> TodoApp</h3>
+        </div>
+        <div class="task-form-action">
+            <a href="{% url 'dashboard' %}" class="btn text-info ml-5"><i class="fa fa-arrow-left"></i> Volver</a>
+        </div>
+    </div>
+    <div class="task-form-mid-section">
+        <div class="task-form">
+            
+            {% if status == True %}
+            <div class="alert alert-success alert-dismissible fade show d-flex flex-row justify-content-center align-items-center w-50" role="alert">
+                <p>{{ msg }} <i class="fa fa-thumbs-o-up"></i> </p>
+                <button type="button" class="close ml-4" data-dismiss="alert" aria-label="Close"><i class="fa fa-times"></i></button>
+            </div>
+        
+            {% elif status == False %}
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center w-50" role="alert">
+                    <p>{{ msg }} <i class="fa fa-thumbs-o-up"></i> </p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+            
+            {% else %}
+                <div></div>
+            
+            {% endif %}
+            
+            <form action="{% url 'update-current-task' task_id %}" method="POST">
+                {% csrf_token %}
+                <h3 class="mb-4">{{ user_ask }} <i class="fa fa-book" style="color:#98acf8"></i> </h3>
+                {{ task_form }}
+                <button class="btn btn-success text-light mt-3" type="submit">Actualizar tarea <i class="fa fa-refresh"></i> </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

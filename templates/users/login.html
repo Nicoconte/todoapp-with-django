@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="user-container w-100">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="user-form d-flex flex-column">
+
+            {% if status == False %}
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <p>Credenciales invalidas <i class="fa fa-thumbs-o-up"></i> </p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+
+            {% else %}
+                <div></div>
+
+            {% endif %}
+
+            <div class="user-form-head" style="background-color:#935add">
+                <h3>Lorem ipsum dolor sit amet consectetur</h3>
+            </div>
+            <div class="user-form-body">
+                <form action="{% url 'login-auth' %}" method="POST" class="h-100">
+                    {% csrf_token %}
+                    {{ user_login_form }}
+                    <button class="btn mt-3" type="submit" style="background-color:#616dda">Iniciar sesion <i
+                            class="fa fa-sign-in"></i> </button>
+                    <p class="mt-5">¿No tiene cuenta? <a href="{% url 'register' %}"> Registrese ya! </a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

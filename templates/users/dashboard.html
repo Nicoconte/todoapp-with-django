@@ -1,0 +1,105 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block body %}
+<div class="dashboard-container">
+    
+    <div class="dashboard-sup-section">
+        <div class="dashboard-sup-info">
+            <div class="dashboard-app-text">
+                <h3> <img src="{% static 'img/logo2.png' %}" alt=""> TodoApp</h3>
+            </div>
+            <div class="dashboard-task-info">
+
+                <div class="alert alert-info">
+                    <span>Total: {{ all_tasks }}</span>
+                </div>
+                
+                <div class="alert alert-success">
+                    <span>Hechas: {{ tasks_done }}</span>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <span>Pendientes: {{ tasks_pending }}</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="dashboard-sup-task-input">
+            <div class="user-action w-50 h-100 d-flex align-items-center">
+                <a href="{% url 'new-task' %}" class="btn text-success ml-4">Crear tarea <i class="fa fa-pencil ml-2"></i> </a>
+                <a href="{% url 'delete-all-task' %}" class="btn" href="">Eliminar todo <i class="fa fa-trash"></i> </a>
+                <a href="{% url 'logout' %}" class="btn text-danger">Cerrar sesion <i class="fa fa-times"></i> </a> 
+            </div>
+            <div class="task-filter w-50 h-100 d-flex align-items-center justify-content-center">
+                <select class="form-control w-75">
+                    <option selected disabled>Filtrar por</option>
+                    <option value=""> <a href="">Prioridad</a> </option>
+                    <option value=""> <a href="">Fecha de creacion</a> </option>
+                    <option value=""> <a href="">Fechas mas proxima</a> </option>
+                </select>    
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="dashboard-mid-section table-responsive-xl">
+        <table class="table table-striped">
+            <tbody>
+
+                {% if not user_tasks %}
+                <tr class='text-center'> 
+                    <td> <span>No hay tareas</span> </td>
+                </tr>
+                
+                {% else %}
+                {% for task in user_tasks %}    
+                <tr>
+                    <td class='text-center'>
+                        <span class=''> {{ task.task | truncatechars:20 }} </span>
+                    </td>
+                    <td>
+                        {% if task.priority == "alta" %}
+                            <span> <i class="fa fa-circle text-danger mr-1"></i> {{ task.priority.capitalize }} </span>
+                        {% elif task.priority == "media" %}
+                            <span> <i class="fa fa-circle text-info mr-1"></i> {{ task.priority.capitalize }} </span>
+                        {% else %}
+                            <span> <i class="fa fa-circle text-success mr-1"></i> {{ task.priority.capitalize }} </span>                          
+                        {% endif %}
+                        
+                    </td>
+                    <td>
+                        {% if task.status %}
+                            <span> <i class="fa fa-lock"></i> Terminada</span>
+                        {% else %}
+                            <span> <i class="fa fa-unlock"></i> Sin terminar</span>
+                        {% endif %}
+
+                    </td>
+                    <td>
+                        <span> <i class="fa fa-tags"></i> {{ task.limit_date }} </span>
+                    </td>
+                    <td class="task-buttons-action">
+                        {% if task.status %}
+                            <a class="btn btn-secondary btn-sm text-light disabled"> <i class="fa fa-check"></i> </a>
+                            <a class="btn btn-warning btn-sm text-light disabled" > <i class="fa fa-pencil"></i> </a>
+                        {% else %}
+                            <a href="{% url 'update-status' task.id %}" class="btn btn-info btn-sm text-light"> <i class="fa fa-check"></i> </a>
+                            <a href="{% url 'update-task' task.id %}" class="btn btn-warning btn-sm text-light" > <i class="fa fa-pencil"></i> </a>
+                        {% endif %}
+                        
+                        <a href="{% url 'task-details' task.id %}" class="btn btn-success btn-sm text-light"> <i class="fa fa-eye"></i> </a>
+                        <a href="{% url 'delete-task' task.id %}" class="btn btn-danger btn-sm text-light"> <i class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock body %}

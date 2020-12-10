@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo application</title>
+    
+    {% load static %}
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">  
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet"> 
+
+	<!-- Boostrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    <section id="main-container">
+        {% block navbar %}
+        <div class="navbar-container w-100 d-flex flex-row">
+            <div class="navbar-log w-25 h-100 d-flex justify-content-start align-items-center">
+                <i> <img src="{% static 'img/logo2.png' %}" alt=""> <a href="{% url 'home' %}" style="background-color:transparent; color:inherit">TodoApp</a> </i>
+            </div>
+            <div class="navbar-buttons w-75 h-100 d-flex justify-content-end align-items-center flex-row">
+                <a href="{% url 'login' %}" class="btn text-light mr-3"> Sign in <i class="fa fa-user"></i></a>
+                <a href="{% url 'register' %}" class="btn text-light mr-5"> Sign up <i class="fa fa-user-plus"></i></a>                
+            </div>
+        </div>        
+        {% endblock navbar %}
+
+        {% block body %}{% endblock body %}
+    </section>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

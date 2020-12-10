@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="user-container w-100">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="user-form d-flex flex-column">
+            
+            {% if status == True %}
+                <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <p>Usuario registrado <i class="fa fa-thumbs-o-up"></i> </p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+            
+            {% elif status == False %}
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                    <p>Datos erroneos <i class="fa fa-thumbs-o-up"></i> </p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fa fa-times"></i></button>
+                </div>
+            
+            {% else %}
+                <div></div>
+            
+            {% endif %}
+
+            <div class="user-form-head" style="background-color:#1a8a71">
+                <h3>Lorem ipsum dolor sit amet consectetur</h3>
+            </div>
+            <div class="user-form-body">
+                <form action="{% url 'register-new' %}" method="POST" class="h-100">
+                    {% csrf_token %}
+                    {{ user_register_form }}
+                    <button class="btn mt-3" type="submit" style="background-color:#208188;">Registrarse <i
+                            class="fa fa-check-square-o"></i> </button>
+                    <p class="mt-5">¿Tiene cuenta? <a href="{% url 'login' %}"> ¡Inicie sesion! </a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

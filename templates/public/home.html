@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block body %}
+
+{%load static%}
+<div class="home-container">
+    <div class="home-background">
+        <img src="{% static 'img/home-img.png' %}" alt="">
+    </div>
+    <div class="home-presentation">
+        <blockquote>
+            <h1>Somos el recordatorio perfecto para usted <i class="fa fa-book" style="color:#4e8d7c;"></i> </h1>
+            <h4>¡Guarde sus tareas del dia a dia en nuestra app en pocos pasos!</h4>
+            <span class="w-100 d-flex justify-content-start mt-3">
+                <a href="" class="btn">Quiero saber mas <i class="fa fa-info-circle ml-1"></i></a>
+                <a href="{% url 'register' %}" class="btn ml-4">Registrarme <i class="fa fa-pencil ml-1"></i></a>
+            </span>
+        </blockquote>
+    </div>
+</div>
+<div class="footer-container">
+    <p> TodoApp <i class="fa fa-copyright"></i> 2020. <a href=""> <i class="fa fa-github"></i> </a> | <a href=""> <i class="fa fa-instagram"></i> </a> </p>
+</div>
+
+{% endblock body %}
